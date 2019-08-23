@@ -7,6 +7,8 @@
 
 package frc.robot;
 
+import edu.wpi.first.wpilibj.*;
+
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
  * to a variable name. This provides flexibility changing wiring, makes checking
@@ -14,13 +16,35 @@ package frc.robot;
  * floating around.
  */
 public class RobotMap {
-  // For example to map the left and right motors, you could define the
-  // following variables to use with your drivetrain subsystem.
-  // public static int leftMotor = 1;
-  // public static int rightMotor = 2;
+  
+  public static Spark mod1A, mod1B;
+  public static Spark mod2C, mod2D;
+  public static Spark mod3E, mod3F;
+  public static Spark mod4G, mod4H;
 
-  // If you are using multiple modules, make sure to define both the port
-  // number and the module. For example you with a rangefinder:
-  // public static int rangefinderPort = 1;
-  // public static int rangefinderModule = 1;
+  public static Encoder mod1AEncoder, mod1BEncoder;
+  public static Encoder mod2CEncoder, mod2DEncoder;
+  public static Encoder mod3EEncoder, mod3FEncoder;
+  public static Encoder mod4GEncoder, mod4HEncoder;
+
+  public RobotMap() {
+    mod1A = new Spark(0);
+    mod1B = new Spark(0);
+    mod2C = new Spark(0);
+    mod2D = new Spark(0);
+    mod3E = new Spark(0);
+    mod3F = new Spark(0);
+    mod4G = new Spark(0);
+    mod4H = new Spark(0);
+
+    mod1AEncoder = new Encoder(0, 0, false, Encoder.EncodingType.k4X);
+    mod1BEncoder = new Encoder(0, 0, false, Encoder.EncodingType.k4X);
+    mod2CEncoder = new Encoder(0, 0, false, Encoder.EncodingType.k4X);
+    mod2DEncoder = new Encoder(0, 0, false, Encoder.EncodingType.k4X);
+    mod3EEncoder = new Encoder(0, 0, false, Encoder.EncodingType.k4X);
+    mod3FEncoder = new Encoder(0, 0, false, Encoder.EncodingType.k4X);
+    mod4GEncoder = new Encoder(0, 0, false, Encoder.EncodingType.k4X);
+    mod4HEncoder = new Encoder(0, 0, false, Encoder.EncodingType.k4X);
+  }
+
 }
