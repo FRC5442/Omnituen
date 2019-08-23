@@ -9,8 +9,6 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.Spark;
-import frc.robot.RobotMap;
-import frc.robot.OI;
 
 /**
  * Basic subsystem class to control a single swerve module.
