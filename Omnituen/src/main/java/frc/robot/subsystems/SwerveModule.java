@@ -9,6 +9,7 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.Spark;
+import edu.wpi.first.wpilibj.Encoder;
 
 /**
  * Basic subsystem class to control a single swerve module.
@@ -16,13 +17,23 @@ import edu.wpi.first.wpilibj.Spark;
 public class SwerveModule extends Subsystem {
 
   Spark topGear, bottomGear;
+  Encoder topEncoder, bottomEncoder;
 
-  public SwerveModule(Spark topGear, Spark bottomGear) {
+  public SwerveModule(Spark topGear, Spark bottomGear, Encoder topEncoder, Encoder bottomEncoder) {
     this.topGear = topGear;
     this.bottomGear = bottomGear;
+    this.topEncoder = topEncoder;
+    this.bottomEncoder = bottomEncoder;
+  }
+
+  public void move(double speed, double rotation) {
+    double topSpeed = speed + rotation;
+    double bottomSpeed = -speed + rotation;
+
+    topGear.set(topSpeed);
+    bottomGear.set(bottomSpeed);
   }
 
   @Override
   public void initDefaultCommand() {}
-
 }
