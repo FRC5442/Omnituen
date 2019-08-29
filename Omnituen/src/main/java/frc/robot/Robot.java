@@ -12,7 +12,6 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.robot.commands.*;
 import frc.robot.subsystems.*;
 import frc.robot.general.*;
 
@@ -24,9 +23,11 @@ import frc.robot.general.*;
  * project.
  */
 public class Robot extends TimedRobot {
-  public static SwerveGroup swerveGroup;
   public static SwerveMath swerveMath;
+  public static SharedConstants sharedConstants;
+
   public static OI oi;
+  public static SwerveGroup swerveGroup;
 
   Command m_autonomousCommand;
   SendableChooser<Command> m_chooser = new SendableChooser<>();
@@ -38,8 +39,9 @@ public class Robot extends TimedRobot {
   @Override
   public void robotInit() {
     swerveMath = new SwerveMath();
-    swerveGroup = new SwerveGroup();
+    sharedConstants = new SharedConstants();
     oi = new OI();
+    swerveGroup = new SwerveGroup();
     // m_chooser.setDefaultOption("Default Auto", new ExampleCommand());
     // chooser.addOption("My Auto", new MyAutoCommand());
     SmartDashboard.putData("Auto mode", m_chooser);

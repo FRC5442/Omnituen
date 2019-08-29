@@ -12,8 +12,6 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
 import frc.robot.Robot;
 import frc.robot.commands.SwerveDrive;
-import frc.robot.general.SharedConstants;
-import frc.robot.general.SwerveMath;
 
 /**
  * Subsystem to sync/control each swerve module.
@@ -30,11 +28,11 @@ public class SwerveGroup extends Subsystem {
   }
 
   public void move(Vector2d moveVector, double rotation) {
-    Double[][] modSpeedsHeadings = Robot.swerveMath.findModSpeedsHeadings(moveVector, rotation, SharedConstants.RobotLength, SharedConstants.RobotWidth);
-    frontRight.move(modSpeedsHeadings[0][0], modSpeedsHeadings[0][1]);
-    frontLeft.move(modSpeedsHeadings[1][0], modSpeedsHeadings[1][1]);
-    backLeft.move(modSpeedsHeadings[2][0], modSpeedsHeadings[2][1]);
-    backRight.move(modSpeedsHeadings[3][0], modSpeedsHeadings[3][1]);
+    Double[][] modSpeedsHeadings = Robot.swerveMath.findModSpeedsHeadings(moveVector, rotation, Robot.sharedConstants.RobotLength, Robot.sharedConstants.RobotWidth);
+    frontRight.move(modSpeedsHeadings[0][0], modSpeedsHeadings[0][1], rotation);
+    frontLeft.move(modSpeedsHeadings[1][0], modSpeedsHeadings[1][1], rotation);
+    backLeft.move(modSpeedsHeadings[2][0], modSpeedsHeadings[2][1], rotation);
+    backRight.move(modSpeedsHeadings[3][0], modSpeedsHeadings[3][1], rotation);
   }
 
   @Override
