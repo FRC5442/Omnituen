@@ -13,7 +13,7 @@ package frc.robot.general;
 public class SharedConstants {
     public final double RobotLength = 1;
     public final double RobotWidth = 1;
-    public final double RobotDiagonal = 1;
+    public final double RobotDiagonal = Math.sqrt(Math.pow(RobotLength, 2) + Math.pow(RobotWidth, 2));
 
     public SharedConstants() {}
 }

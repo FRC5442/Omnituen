@@ -28,7 +28,7 @@ public class SwerveGroup extends Subsystem {
   }
 
   public void move(Vector2d moveVector, double rotation) {
-    Double[][] modSpeedsHeadings = Robot.swerveMath.findModSpeedsHeadings(moveVector, rotation, Robot.sharedConstants.RobotLength, Robot.sharedConstants.RobotWidth);
+    Double[][] modSpeedsHeadings = Robot.swerveMath.findModSpeedsHeadings(moveVector, rotation);
     frontRight.move(modSpeedsHeadings[0][0], modSpeedsHeadings[0][1], rotation);
     frontLeft.move(modSpeedsHeadings[1][0], modSpeedsHeadings[1][1], rotation);
     backLeft.move(modSpeedsHeadings[2][0], modSpeedsHeadings[2][1], rotation);

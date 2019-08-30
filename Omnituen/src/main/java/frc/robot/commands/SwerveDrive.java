@@ -12,7 +12,9 @@ import edu.wpi.first.wpilibj.drive.Vector2d;
 import frc.robot.Robot;
 
 public class SwerveDrive extends Command {
-  public SwerveDrive() {}
+  public SwerveDrive() {
+    requires(Robot.swerveGroup);
+  }
 
   @Override
   protected void initialize() {}
