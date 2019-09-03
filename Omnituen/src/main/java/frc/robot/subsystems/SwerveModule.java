@@ -26,12 +26,16 @@ public class SwerveModule extends Subsystem {
     this.bottomEncoder = bottomEncoder;
   }
 
-  public void move(double speed, double angle, double rotation) {
-    double topSpeed = speed + rotation;
-    double bottomSpeed = -speed + rotation;
-
-    topGear.set(topSpeed);
-    bottomGear.set(bottomSpeed);
+  public void move(double speed, double angle) {
+    if ((topEncoder.getDistance() + bottomEncoder.getDistance()) / 2 >= angle - 5 &&
+        (topEncoder.getDistance() + bottomEncoder.getDistance()) / 2 <= angle + 5) {
+          topGear.set(speed);
+          bottomGear.set(-speed);
+    }
+    else {
+      topGear.set(speed + (1 / (((topEncoder.getDistance() + bottomEncoder.getDistance()) / 2) - angle)));
+      bottomGear.set(-speed + (1 / (((topEncoder.getDistance() + bottomEncoder.getDistance()) / 2) - angle)));
+    }
   }
 
   @Override
