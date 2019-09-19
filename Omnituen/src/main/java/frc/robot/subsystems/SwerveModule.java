@@ -27,14 +27,23 @@ public class SwerveModule extends Subsystem {
   }
 
   public void move(double speed, double angle) {
-    if ((topEncoder.getDistance() + bottomEncoder.getDistance()) / 2 >= angle - 5 &&
-        (topEncoder.getDistance() + bottomEncoder.getDistance()) / 2 <= angle + 5) {
+    assert speed >= -1 && speed <= 1;
+    assert angle >= 0 && angle <= 359;
+
+    double topDistance = topEncoder.getDistance() % 360;
+    double bottomDistance = bottomEncoder.getDistance() % 360;
+
+    double currentAngle = (topDistance + bottomDistance) / 2;
+
+    if (currentAngle >= angle - 1 &&
+        currentAngle <= angle + 1) {
           topGear.set(speed);
           bottomGear.set(-speed);
     }
     else {
-      topGear.set(speed + (1 / (((topEncoder.getDistance() + bottomEncoder.getDistance()) / 2) - angle)));
-      bottomGear.set(-speed + (1 / (((topEncoder.getDistance() + bottomEncoder.getDistance()) / 2) - angle)));
+      // if module angle not in tolerable angle range: set both gears to the speed + (range of 0-1) angle difference
+      topGear.set(speed + (1 / ((currentAngle) - angle)));
+      bottomGear.set(-speed + (1 / ((currentAngle) - angle)));
     }
   }
 
