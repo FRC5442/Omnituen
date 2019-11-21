@@ -42,8 +42,8 @@ public class SwerveModule extends Subsystem {
     }
     else {
       // if module angle not in tolerable angle range: set both gears to the speed + (range of 0-1) angle difference
-      topGear.set(-speed + (1 / ((currentAngle) - angle)));
-      bottomGear.set(speed + (1 / ((currentAngle) - angle)));
+      topGear.set(-speed + (1 / (currentAngle - angle)));
+      bottomGear.set(speed + (1 / (currentAngle - angle)));
     }
   }
 
