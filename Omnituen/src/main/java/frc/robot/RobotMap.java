@@ -22,10 +22,7 @@ public class RobotMap {
   public static Spark mod3E, mod3F;
   public static Spark mod4G, mod4H;
 
-  public static Encoder mod1AEncoder, mod1BEncoder;
-  public static Encoder mod2CEncoder, mod2DEncoder;
-  public static Encoder mod3EEncoder, mod3FEncoder;
-  public static Encoder mod4GEncoder, mod4HEncoder;
+  public static Encoder mod1Encoder, mod2Encoder, mod3Encoder, mod4Encoder;
 
   public RobotMap() {
     // speed controllers
@@ -39,30 +36,18 @@ public class RobotMap {
     mod4H = new Spark(0);
 
     // encoders
-    mod1AEncoder = new Encoder(0, 0, false, Encoder.EncodingType.k4X);
-    mod1AEncoder.setDistancePerPulse(1/360);
-    mod1AEncoder.setSamplesToAverage(5);
-    mod1BEncoder = new Encoder(0, 0, false, Encoder.EncodingType.k4X);
-    mod1BEncoder.setDistancePerPulse(1/360);
-    mod1BEncoder.setSamplesToAverage(5);
-    mod2CEncoder = new Encoder(0, 0, false, Encoder.EncodingType.k4X);
-    mod2CEncoder.setDistancePerPulse(1/360);
-    mod2CEncoder.setSamplesToAverage(5);
-    mod2DEncoder = new Encoder(0, 0, false, Encoder.EncodingType.k4X);
-    mod2DEncoder.setDistancePerPulse(1/360);
-    mod2DEncoder.setSamplesToAverage(5);
-    mod3EEncoder = new Encoder(0, 0, false, Encoder.EncodingType.k4X);
-    mod3EEncoder.setDistancePerPulse(1/360);
-    mod3EEncoder.setSamplesToAverage(5);
-    mod3FEncoder = new Encoder(0, 0, false, Encoder.EncodingType.k4X);
-    mod3FEncoder.setDistancePerPulse(1/360);
-    mod3FEncoder.setSamplesToAverage(5);
-    mod4GEncoder = new Encoder(0, 0, false, Encoder.EncodingType.k4X);
-    mod4GEncoder.setDistancePerPulse(1/360);
-    mod4GEncoder.setSamplesToAverage(5);
-    mod4HEncoder = new Encoder(0, 0, false, Encoder.EncodingType.k4X);
-    mod4HEncoder.setDistancePerPulse(1/360);
-    mod4HEncoder.setSamplesToAverage(5);
+    mod1Encoder = new Encoder(0, 0, false, Encoder.EncodingType.k4X);
+    mod1Encoder.setDistancePerPulse(1/360);
+    mod1Encoder.setSamplesToAverage(5);
+    mod2Encoder = new Encoder(0, 0, false, Encoder.EncodingType.k4X);
+    mod2Encoder.setDistancePerPulse(1/360);
+    mod2Encoder.setSamplesToAverage(5);
+    mod3Encoder = new Encoder(0, 0, false, Encoder.EncodingType.k4X);
+    mod3Encoder.setDistancePerPulse(1/360);
+    mod3Encoder.setSamplesToAverage(5);
+    mod4Encoder = new Encoder(0, 0, false, Encoder.EncodingType.k4X);
+    mod4Encoder.setDistancePerPulse(1/360);
+    mod4Encoder.setSamplesToAverage(5);
   }
 
 }

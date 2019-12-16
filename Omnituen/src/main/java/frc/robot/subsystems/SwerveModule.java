@@ -17,23 +17,21 @@ import edu.wpi.first.wpilibj.Encoder;
 public class SwerveModule extends Subsystem {
 
   Spark topGear, bottomGear;
-  Encoder topEncoder, bottomEncoder;
+  Encoder encoder;
 
-  public SwerveModule(Spark topGear, Spark bottomGear, Encoder topEncoder, Encoder bottomEncoder) {
+  public SwerveModule(Spark topGear, Spark bottomGear, Encoder encoder) {
     this.topGear = topGear;
     this.bottomGear = bottomGear;
-    this.topEncoder = topEncoder;
-    this.bottomEncoder = bottomEncoder;
+    this.encoder = encoder;
   }
-
-  public void move(double speed, double angle) {
+  
+  //just a concept, not to be used yet...
+  public void moveSwerve(double speed, double angle) {
+    /*
     assert speed >= -1 && speed <= 1;
     assert angle >= 0 && angle <= 359;
 
-    double topDistance = topEncoder.getDistance() % 360;
-    double bottomDistance = bottomEncoder.getDistance() % 360;
-
-    double currentAngle = (topDistance + bottomDistance) / 2;
+    double currentAngle = encoder.getDistance();
 
     if (currentAngle >= angle - 1 &&
         currentAngle <= angle + 1) {
@@ -45,6 +43,31 @@ public class SwerveModule extends Subsystem {
       topGear.set(-speed + (1 / (currentAngle - angle)));
       bottomGear.set(speed + (1 / (currentAngle - angle)));
     }
+    */
+  }
+
+  public void moveCrab(double speed, double rotation, double angle) {
+    assert speed >= -1 && speed <= 1;
+    assert rotation >= -1 && rotation <= 1;
+    assert angle >= 0 && angle <= 359;
+
+    double currentAngle = encoder.getDistance() % 360;
+
+    if (rotation == 0) {
+      if (Math.abs(angle - currentAngle) > 1) {
+        topGear.set((angle - currentAngle) / 100);
+        bottomGear.set((angle - currentAngle) / 100);
+      }
+      else {
+        topGear.set(-speed);
+        bottomGear.set(speed);
+      }
+    }
+    else {
+      topGear.set(rotation);
+      bottomGear.set(rotation);
+    }
+
   }
 
   @Override

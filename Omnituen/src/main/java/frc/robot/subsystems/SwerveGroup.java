@@ -21,18 +21,33 @@ public class SwerveGroup extends Subsystem {
   SwerveModule frontRight, frontLeft, backRight, backLeft;
 
   public SwerveGroup() {
-    frontRight = new SwerveModule(RobotMap.mod1A, RobotMap.mod1B, RobotMap.mod1AEncoder, RobotMap.mod1BEncoder);
-    frontLeft = new SwerveModule(RobotMap.mod2C, RobotMap.mod2D, RobotMap.mod2CEncoder, RobotMap.mod2DEncoder);
-    backLeft = new SwerveModule(RobotMap.mod3E, RobotMap.mod3F, RobotMap.mod3EEncoder, RobotMap.mod3FEncoder);
-    backRight = new SwerveModule(RobotMap.mod4G, RobotMap.mod4H, RobotMap.mod4GEncoder, RobotMap.mod4HEncoder);
+    frontRight = new SwerveModule(RobotMap.mod1A, RobotMap.mod1B, RobotMap.mod1Encoder);
+    frontLeft = new SwerveModule(RobotMap.mod2C, RobotMap.mod2D, RobotMap.mod2Encoder);
+    backLeft = new SwerveModule(RobotMap.mod3E, RobotMap.mod3F, RobotMap.mod3Encoder);
+    backRight = new SwerveModule(RobotMap.mod4G, RobotMap.mod4H, RobotMap.mod4Encoder);
   }
 
-  public void move(Vector2d moveVector, double rotation) {
-    Double[][] modSpeedsHeadings = Robot.swerveMath.findModSpeedsHeadings(moveVector, rotation);
-    frontRight.move(modSpeedsHeadings[0][0], modSpeedsHeadings[0][1]);
-    frontLeft.move(modSpeedsHeadings[1][0], modSpeedsHeadings[1][1]);
-    backLeft.move(modSpeedsHeadings[2][0], modSpeedsHeadings[2][1]);
-    backRight.move(modSpeedsHeadings[3][0], modSpeedsHeadings[3][1]);
+  public void moveSwerve(Vector2d moveVector, double rotation) {
+    Double[][] modSpeedsHeadings = Robot.swerveMath.findSwerveSpeedsHeadings(moveVector, rotation);
+    frontRight.moveSwerve(modSpeedsHeadings[0][0], modSpeedsHeadings[0][1]);
+    frontLeft.moveSwerve(modSpeedsHeadings[1][0], modSpeedsHeadings[1][1]);
+    backLeft.moveSwerve(modSpeedsHeadings[2][0], modSpeedsHeadings[2][1]);
+    backRight.moveSwerve(modSpeedsHeadings[3][0], modSpeedsHeadings[3][1]);
+  }
+
+  public void moveCrab(Vector2d moveVector, double rotation) {
+    if (rotation == 0) {
+      frontRight.moveCrab(moveVector.magnitude(), rotation, (Math.atan2(moveVector.y, moveVector.x) * 180 / Math.PI));
+      frontLeft.moveCrab(moveVector.magnitude(), rotation, (Math.atan2(moveVector.y, moveVector.x) * 180 / Math.PI));
+      backLeft.moveCrab(moveVector.magnitude(), rotation, (Math.atan2(moveVector.y, moveVector.x) * 180 / Math.PI));
+      backRight.moveCrab(moveVector.magnitude(), rotation, (Math.atan2(moveVector.y, moveVector.x) * 180 / Math.PI)); 
+    }
+    else {
+      frontRight.moveCrab(moveVector.magnitude(), rotation, 315);
+      frontLeft.moveCrab(moveVector.magnitude(), rotation, 225);
+      backLeft.moveCrab(moveVector.magnitude(), rotation, 135);
+      backRight.moveCrab(moveVector.magnitude(), rotation, 45);
+    }
   }
 
   @Override

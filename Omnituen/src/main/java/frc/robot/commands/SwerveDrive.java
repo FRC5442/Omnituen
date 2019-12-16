@@ -22,7 +22,7 @@ public class SwerveDrive extends Command {
   @Override
   protected void execute() {
     Vector2d moveVector = new Vector2d(Robot.oi.xboxController1.getRawAxis(0), Robot.oi.xboxController1.getRawAxis(1));
-    Robot.swerveGroup.move(moveVector, Robot.oi.xboxController1.getRawAxis(4));
+    Robot.swerveGroup.moveCrab(moveVector, Robot.oi.xboxController1.getRawAxis(4));
   }
 
   @Override

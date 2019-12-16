@@ -11,9 +11,7 @@ package frc.robot.general;
  * List of constants shared across project.
  */
 public class SharedConstants {
-    public final double RobotLength = 1;
-    public final double RobotWidth = 1;
-    public final double RobotDiagonal = Math.sqrt(Math.pow(RobotLength, 2) + Math.pow(RobotWidth, 2));
-
-    public SharedConstants() {}
+    public final double ROBOT_LENGTH = 1;
+    public double ROBOT_WIDTH = 1;
+    public double ROBOT_DIAGONAL = Math.sqrt(Math.pow(ROBOT_LENGTH, 2) + Math.pow(ROBOT_WIDTH, 2));
 }
