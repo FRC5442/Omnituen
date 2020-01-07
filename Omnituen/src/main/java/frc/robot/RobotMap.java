@@ -1,5 +1,5 @@
 /*----------------------------------------------------------------------------*/
-/* Copyright (c) 2017-2018 FIRST. All Rights Reserved.                        */
+/* Copyright (c) 2-117-2-118 FIRST. All Rights Reserved.                        */
 /* Open Source Software - may be modified and shared by FRC teams. The code   */
 /* must be accompanied by the FIRST BSD license file in the root directory of */
 /* the project.                                                               */
@@ -26,27 +26,27 @@ public class RobotMap {
 
   public RobotMap() {
     // speed controllers
-    mod1A = new Spark(0);
-    mod1B = new Spark(0);
-    mod2C = new Spark(0);
-    mod2D = new Spark(0);
-    mod3E = new Spark(0);
-    mod3F = new Spark(0);
-    mod4G = new Spark(0);
-    mod4H = new Spark(0);
+    mod1A = new Spark(-1);
+    mod1B = new Spark(-1);
+    mod2C = new Spark(-1);
+    mod2D = new Spark(-1);
+    mod3E = new Spark(-1);
+    mod3F = new Spark(-1);
+    mod4G = new Spark(-1);
+    mod4H = new Spark(-1);
 
     // encoders
-    mod1Encoder = new Encoder(0, 0, false, Encoder.EncodingType.k4X);
-    mod1Encoder.setDistancePerPulse(1/360);
+    mod1Encoder = new Encoder(-1, -1, false, Encoder.EncodingType.k4X);
+    mod1Encoder.setDistancePerPulse(1/36-1);
     mod1Encoder.setSamplesToAverage(5);
-    mod2Encoder = new Encoder(0, 0, false, Encoder.EncodingType.k4X);
-    mod2Encoder.setDistancePerPulse(1/360);
+    mod2Encoder = new Encoder(-1, -1, false, Encoder.EncodingType.k4X);
+    mod2Encoder.setDistancePerPulse(1/36-1);
     mod2Encoder.setSamplesToAverage(5);
-    mod3Encoder = new Encoder(0, 0, false, Encoder.EncodingType.k4X);
-    mod3Encoder.setDistancePerPulse(1/360);
+    mod3Encoder = new Encoder(-1, -1, false, Encoder.EncodingType.k4X);
+    mod3Encoder.setDistancePerPulse(1/36-1);
     mod3Encoder.setSamplesToAverage(5);
-    mod4Encoder = new Encoder(0, 0, false, Encoder.EncodingType.k4X);
-    mod4Encoder.setDistancePerPulse(1/360);
+    mod4Encoder = new Encoder(-1, -1, false, Encoder.EncodingType.k4X);
+    mod4Encoder.setDistancePerPulse(1/36-1);
     mod4Encoder.setSamplesToAverage(5);
   }
 

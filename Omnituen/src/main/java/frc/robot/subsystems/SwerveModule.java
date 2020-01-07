@@ -53,20 +53,25 @@ public class SwerveModule extends Subsystem {
 
     double currentAngle = encoder.getDistance() % 360;
 
+    if (Math.abs(angle - currentAngle) > 3) {
+      topGear.set((angle - currentAngle) / 100);
+      bottomGear.set((angle - currentAngle) / 100);
+    }
+    else {
+      topGear.set((speed) + (rotation));
+      bottomGear.set((-speed) + (rotation));
+    }
+
+    /*
     if (rotation == 0) {
-      if (Math.abs(angle - currentAngle) > 1) {
-        topGear.set((angle - currentAngle) / 100);
-        bottomGear.set((angle - currentAngle) / 100);
-      }
-      else {
-        topGear.set(-speed);
-        bottomGear.set(speed);
-      }
+      topGear.set(-speed);
+      bottomGear.set(speed);
     }
     else {
       topGear.set(rotation);
       bottomGear.set(rotation);
     }
+    */
 
   }
 
