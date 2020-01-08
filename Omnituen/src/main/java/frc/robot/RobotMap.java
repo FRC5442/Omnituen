@@ -8,6 +8,9 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.*;
+import com.revrobotics.frc.*;
+import com.ctre.phoenix.*;
+import com.kauailabs.navx.frc.*;
 
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
@@ -15,6 +18,7 @@ import edu.wpi.first.wpilibj.*;
  * the wiring easier and significantly reduces the number of magic numbers
  * floating around.
  */
+
 public class RobotMap {
   
   public static Spark mod1A, mod1B;
