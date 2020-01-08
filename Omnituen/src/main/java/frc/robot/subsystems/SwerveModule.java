@@ -9,7 +9,7 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.Spark;
-import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.AnalogPotentiometer;
 
 /**
  * Basic subsystem class to control a single swerve module.
@@ -17,9 +17,9 @@ import edu.wpi.first.wpilibj.Encoder;
 public class SwerveModule extends Subsystem {
 
   Spark topGear, bottomGear;
-  Encoder encoder;
+  AnalogPotentiometer encoder;
 
-  public SwerveModule(Spark topGear, Spark bottomGear, Encoder encoder) {
+  public SwerveModule(Spark topGear, Spark bottomGear, AnalogPotentiometer encoder) {
     this.topGear = topGear;
     this.bottomGear = bottomGear;
     this.encoder = encoder;
@@ -27,23 +27,6 @@ public class SwerveModule extends Subsystem {
   
   //just a concept, not to be used yet...
   public void moveSwerve(double speed, double angle) {
-    /*
-    assert speed >= -1 && speed <= 1;
-    assert angle >= 0 && angle <= 359;
-
-    double currentAngle = encoder.getDistance();
-
-    if (currentAngle >= angle - 1 &&
-        currentAngle <= angle + 1) {
-          topGear.set(-speed);
-          bottomGear.set(speed);
-    }
-    else {
-      // if module angle not in tolerable angle range: set both gears to the speed + (range of 0-1) angle difference
-      topGear.set(-speed + (1 / (currentAngle - angle)));
-      bottomGear.set(speed + (1 / (currentAngle - angle)));
-    }
-    */
   }
 
   public void moveCrab(double speed, double rotation, double angle) {
@@ -51,28 +34,10 @@ public class SwerveModule extends Subsystem {
     assert rotation >= -1 && rotation <= 1;
     assert angle >= 0 && angle <= 359;
 
-    double currentAngle = encoder.getDistance() % 360;
+    double currentAngle = encoder.get();
 
-    if (Math.abs(angle - currentAngle) > 3) {
-      topGear.set((angle - currentAngle) / 100);
-      bottomGear.set((angle - currentAngle) / 100);
-    }
-    else {
-      topGear.set((speed) + (rotation));
-      bottomGear.set((-speed) + (rotation));
-    }
-
-    /*
-    if (rotation == 0) {
-      topGear.set(-speed);
-      bottomGear.set(speed);
-    }
-    else {
-      topGear.set(rotation);
-      bottomGear.set(rotation);
-    }
-    */
-
+    topGear.set((speed) + (rotation));
+    bottomGear.set((-speed) + (rotation));
   }
 
   @Override
